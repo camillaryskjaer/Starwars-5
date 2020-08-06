@@ -16,6 +16,9 @@ namespace Starwars
 
             //task 1 get all planets that starts with M
             Console.WriteLine("opgave 1");
+            
+            //Hvad var der sket, hvis man var kommet til at taste forkert og bruge et lille M når man skulle oprette planeten?
+            
             List<Planet> planetsR = planets.Where(p => p.Name.StartsWith("M")).ToList();
             foreach(Planet planet in planetsR)
             {
@@ -80,6 +83,13 @@ namespace Starwars
             //order by name, SurfaceWater, RotationPeriod
             Console.WriteLine();
             Console.WriteLine("opgave 8");
+            //overvej om det ikke er bedst at bryde dine lange linier, det gør din kode mere læsevenlig
+            planetsR = planets.Where(p => (p.RotationPeriod < 30 || p.SurfaceWater > 50) && p.Name.Contains("ba"))
+                              .OrderBy(p => p.Name).ThenBy(p => p.SurfaceWater)
+                              .ThenBy(p => p.RotationPeriod)
+                              .ToList();
+      
+            
             planetsR = planets.Where(p => (p.RotationPeriod < 30 || p.SurfaceWater > 50) && p.Name.Contains("ba")).OrderBy(p => p.Name).ThenBy(p => p.SurfaceWater).ThenBy(p => p.RotationPeriod).ToList();
             foreach (Planet planet in planetsR)
             {
@@ -87,6 +97,8 @@ namespace Starwars
             }
 
             //task 9 get all planets that SurfaceWater over 0 and order in falling order
+            
+            //Falling betyder at falde - altså at man falder ned fra en skrænt :) Når man vil sige faldende orden på engelsk angiver med det som decending (nedstigning) :) 
             Console.WriteLine();
             Console.WriteLine("opgave 9");
             planetsR = planets.Where(p => p.SurfaceWater > 0).OrderByDescending(p => p.SurfaceWater).ToList();
